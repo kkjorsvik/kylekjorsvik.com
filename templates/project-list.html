@@ -1,0 +1,14 @@
+{{define "content"}}
+<header class="page-header">
+  <h1>Projects</h1>
+  <p class="muted">Things I'm building and have built.</p>
+</header>
+
+{{if .Projects}}
+<div class="card-grid">
+  {{range .Projects}}{{template "projectCard" .}}{{end}}
+</div>
+{{else}}
+<p class="muted">No projects yet.</p>
+{{end}}
+{{end}}

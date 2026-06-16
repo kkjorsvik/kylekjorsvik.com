@@ -1,0 +1,34 @@
+{{define "content"}}
+<section class="hero">
+  <h2 class="hero-title">I build boring, reliable infrastructure.</h2>
+  <p class="hero-tagline">{{.SiteTagline}}</p>
+</section>
+
+<section class="home-section">
+  <div class="section-head">
+    <h2>Recent Posts</h2>
+    <a href="/blog/" class="section-link">All posts →</a>
+  </div>
+  {{if .Posts}}
+  <div class="card-grid">
+    {{range .Posts}}{{template "postCard" .}}{{end}}
+  </div>
+  {{else}}
+  <p class="muted">No posts yet.</p>
+  {{end}}
+</section>
+
+<section class="home-section">
+  <div class="section-head">
+    <h2>Featured Projects</h2>
+    <a href="/projects/" class="section-link">All projects →</a>
+  </div>
+  {{if .Projects}}
+  <div class="card-grid">
+    {{range .Projects}}{{template "projectCard" .}}{{end}}
+  </div>
+  {{else}}
+  <p class="muted">No projects yet.</p>
+  {{end}}
+</section>
+{{end}}

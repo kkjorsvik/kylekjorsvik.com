@@ -1,0 +1,12 @@
+{{define "content"}}
+{{with .Page}}
+<article class="prose">
+  <header class="page-header">
+    <h1>{{.Title}}</h1>
+  </header>
+  <div class="post-body">
+    {{.Body}}
+  </div>
+</article>
+{{end}}
+{{end}}

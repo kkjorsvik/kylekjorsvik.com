@@ -1,0 +1,25 @@
+when:
+  event: push
+  branch: main
+
+steps:
+  - name: build-site
+    image: golang:1.26-alpine
+    commands:
+      - go build -o build ./cmd/build/
+      - ./build
+
+  - name: deploy
+    image: alpine
+    secrets:
+      - DEPLOY_HOST
+      - DEPLOY_USER
+      - DEPLOY_KEY
+      - DEPLOY_PATH
+    commands:
+      - apk add --no-cache openssh rsync
+      - mkdir -p ~/.ssh
+      - echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+      - rsync -avz --delete output/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH

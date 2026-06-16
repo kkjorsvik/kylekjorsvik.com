@@ -1,0 +1,392 @@
+/* ==========================================================================
+   custom.css — colors, cards, nav, and dark/light theming on top of Pico CSS.
+   ========================================================================== */
+
+:root {
+  --color-bg: #0f1117;
+  --color-surface: #1a1d27;
+  --color-surface-raised: #21253a;
+  --color-border: #2a2f45;
+  --color-text: #e2e4ee;
+  --color-text-muted: #8b90a8;
+  --color-accent: #22d3ee;       /* cyan-400 */
+  --color-accent-dim: #0891b2;   /* cyan-600 */
+  --color-accent-subtle: rgba(34, 211, 238, 0.08);
+
+  /* Map our palette onto Pico's variables so base elements inherit it. */
+  --pico-background-color: var(--color-bg);
+  --pico-color: var(--color-text);
+  --pico-primary: var(--color-accent);
+  --pico-primary-hover: var(--color-accent-dim);
+  --pico-muted-color: var(--color-text-muted);
+
+  --content-width: 72ch;
+}
+
+[data-theme="light"] {
+  --color-bg: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f0f1f5;
+  --color-border: #d1d5e0;
+  --color-text: #1a1d27;
+  --color-text-muted: #5a5f7a;
+  --color-accent: #0891b2;
+  --color-accent-dim: #0e7490;
+  --color-accent-subtle: rgba(8, 145, 178, 0.08);
+
+  --pico-background-color: var(--color-bg);
+  --pico-color: var(--color-text);
+  --pico-primary: var(--color-accent);
+  --pico-primary-hover: var(--color-accent-dim);
+  --pico-muted-color: var(--color-text-muted);
+}
+
+/* --- Base ------------------------------------------------------------------ */
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+code, pre, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-accent-dim);
+  text-decoration: underline;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+/* --- Header / nav ---------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.85rem;
+}
+
+.site-brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+.site-brand:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.nav-links a.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
+/* --- Theme toggle ---------------------------------------------------------- */
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 8px;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+.theme-toggle:hover {
+  border-color: var(--color-accent-dim);
+}
+/* Show the icon for the theme you'd switch TO. */
+.theme-icon-light { display: none; }
+.theme-icon-dark  { display: inline; }
+[data-theme="light"] .theme-icon-light { display: inline; }
+[data-theme="light"] .theme-icon-dark  { display: none; }
+
+/* --- Main / footer --------------------------------------------------------- */
+
+.site-main {
+  flex: 1 0 auto;
+  padding-block: 2.5rem 4rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+.site-footer p { margin: 0; }
+
+/* --- Hero ------------------------------------------------------------------ */
+
+.hero {
+  padding-block: 1rem 2.5rem;
+}
+.hero-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+.hero-tagline {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* --- Sections -------------------------------------------------------------- */
+
+.home-section {
+  margin-block: 2.5rem;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+.section-head h2 { margin: 0; font-size: 1.4rem; }
+.section-link { font-size: 0.9rem; }
+
+.page-header { margin-bottom: 2rem; }
+.page-header h1 {
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+}
+
+/* --- Cards ----------------------------------------------------------------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: border-color 0.15s ease;
+}
+.card:hover {
+  border-color: var(--color-accent-dim);
+}
+
+.card-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+.card-title a { color: var(--color-text); }
+.card-title a:hover { color: var(--color-accent); text-decoration: none; }
+
+.card-desc {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 0.85rem;
+}
+
+.project-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* --- Tags ------------------------------------------------------------------ */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tag-list li {
+  list-style: none;
+  margin: 0;
+}
+.tag {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  background: var(--color-accent-subtle);
+  border: 1px solid var(--color-accent-dim);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  line-height: 1.5;
+}
+
+/* --- Status badges --------------------------------------------------------- */
+
+.status-badge {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  white-space: nowrap;
+}
+.status-active {
+  color: var(--color-accent);
+  background: var(--color-accent-subtle);
+  border: 1px solid var(--color-accent-dim);
+}
+.status-paused {
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+.status-complete {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+/* --- Links list ------------------------------------------------------------ */
+
+.link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.link-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Prose / article ------------------------------------------------------- */
+
+.prose {
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+.back-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-text-muted);
+}
+.back-link:hover { color: var(--color-accent); text-decoration: none; }
+
+.post-header { margin-bottom: 2rem; }
+.post-header h1 {
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+.post-meta {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+}
+.project-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.post-body { line-height: 1.7; }
+.post-body h2 { font-size: 1.5rem; margin-top: 2rem; }
+.post-body h3 { font-size: 1.2rem; margin-top: 1.5rem; }
+.post-body h2, .post-body h3 { color: var(--color-text); }
+
+.post-body :not(pre) > code {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.88em;
+}
+
+.post-body pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+}
+.post-body pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--color-accent-dim);
+  background: var(--color-accent-subtle);
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem;
+  color: var(--color-text);
+}
+
+.post-body img { max-width: 100%; border-radius: 8px; }
+
+/* --- Responsive ------------------------------------------------------------ */
+
+@media (max-width: 560px) {
+  .nav-links { gap: 0.85rem; }
+  .nav-links a { font-size: 0.88rem; }
+  .site-brand { font-size: 1rem; }
+}

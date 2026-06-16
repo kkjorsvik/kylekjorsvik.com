@@ -1,0 +1,35 @@
+{{define "tags"}}
+{{if .}}
+<ul class="tag-list">
+  {{range .}}<li class="tag">{{.}}</li>{{end}}
+</ul>
+{{end}}
+{{end}}
+
+{{define "statusBadge"}}
+{{if .}}<span class="status-badge status-{{.}}">{{.}}</span>{{end}}
+{{end}}
+
+{{define "postCard"}}
+<article class="card post-card">
+  <h3 class="card-title"><a href="{{.URL}}">{{.Title}}</a></h3>
+  {{if .Description}}<p class="card-desc">{{.Description}}</p>{{end}}
+  {{template "tags" .Tags}}
+</article>
+{{end}}
+
+{{define "projectCard"}}
+<article class="card project-card">
+  <header class="project-card-head">
+    <h3 class="card-title"><a href="{{.URL}}">{{.Title}}</a></h3>
+    {{template "statusBadge" .Status}}
+  </header>
+  {{if .Description}}<p class="card-desc">{{.Description}}</p>{{end}}
+  {{template "tags" .Tags}}
+  {{if .Links}}
+  <ul class="link-list">
+    {{range .Links}}<li><a href="{{.URL}}" rel="noopener">{{.Label}} ↗</a></li>{{end}}
+  </ul>
+  {{end}}
+</article>
+{{end}}

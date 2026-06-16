@@ -1,0 +1,15 @@
+{{define "content"}}
+{{with .Post}}
+<article class="prose">
+  <a href="/blog/" class="back-link">← Back to blog</a>
+  <header class="post-header">
+    <h1>{{.Title}}</h1>
+    {{if not .Date.IsZero}}<p class="post-meta">{{dateLong .Date}}</p>{{end}}
+    {{template "tags" .Tags}}
+  </header>
+  <div class="post-body">
+    {{.Body}}
+  </div>
+</article>
+{{end}}
+{{end}}

@@ -1,0 +1,23 @@
+{{define "content"}}
+{{with .Project}}
+<article class="prose">
+  <a href="/projects/" class="back-link">← Back to projects</a>
+  <header class="post-header">
+    <div class="project-title-row">
+      <h1>{{.Title}}</h1>
+      {{template "statusBadge" .Status}}
+    </div>
+    {{if .Description}}<p class="muted">{{.Description}}</p>{{end}}
+    {{template "tags" .Tags}}
+    {{if .Links}}
+    <ul class="link-list">
+      {{range .Links}}<li><a href="{{.URL}}" rel="noopener">{{.Label}} ↗</a></li>{{end}}
+    </ul>
+    {{end}}
+  </header>
+  <div class="post-body">
+    {{.Body}}
+  </div>
+</article>
+{{end}}
+{{end}}

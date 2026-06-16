@@ -2,6 +2,17 @@ when:
   event: push
   branch: main
 
+# TEMP: git.kkjorsvik.com does not have a trusted TLS cert yet, so the clone
+# fails cert verification. Skip verification for now — REMOVE this whole clone
+# block once the Forgejo host has a valid certificate.
+clone:
+  - name: clone
+    image: woodpeckerci/plugin-git
+    settings:
+      insecure_skip_verify: true
+    environment:
+      GIT_SSL_NO_VERIFY: "true"
+
 steps:
   - name: build-site
     image: golang:1.26-alpine

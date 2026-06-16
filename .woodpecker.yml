@@ -11,15 +11,19 @@ steps:
 
   - name: deploy
     image: alpine
-    secrets:
-      - DEPLOY_HOST
-      - DEPLOY_USER
-      - DEPLOY_KEY
-      - DEPLOY_PATH
+    environment:
+      DEPLOY_HOST:
+        from_secret: deploy_host
+      DEPLOY_USER:
+        from_secret: deploy_user
+      DEPLOY_KEY:
+        from_secret: deploy_key
+      DEPLOY_PATH:
+        from_secret: deploy_path
     commands:
       - apk add --no-cache openssh rsync
-      - mkdir -p ~/.ssh
-      - echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+      - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+      - printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
-      - echo "StrictHostKeyChecking no" >> ~/.ssh/config
-      - rsync -avz --delete output/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+      - echo "StrictHostKeyChecking accept-new" >> ~/.ssh/config
+      - rsync -avz --delete output/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"

@@ -20,8 +20,7 @@ runtime, the agents have real isolation, and I can extend it whenever I need to.
 
 The primary agent running on Kyvik today is Hank — my personal ops agent. Hank handles
 daily accountability check-ins over Discord, routes tasks, connects to NorthstarOS (my
-task execution system), and keeps me honest about what I said I was going to do. I also
-run a Job Hunter agent through Kyvik during my current job search.
+task execution system), and keeps me honest about what I said I was going to do.
 
 The reason I built it myself instead of reaching for an existing platform is the same
 reason I build most things: I learn a domain better when I'm responsible for the whole

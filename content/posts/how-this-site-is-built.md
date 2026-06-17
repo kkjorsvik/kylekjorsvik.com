@@ -80,3 +80,5 @@ about ten lines inlined in the `<head>` to prevent a flash of the wrong theme on
 No pagination yet — I'll add it when the post count warrants it. No search, no
 comments, no analytics. The RSS feed is there if you want to follow along without
 giving anything up.
+
+The source for this site is [on GitHub](https://github.com/kkjorsvik/kylekjorsvik.com).

@@ -1,5 +1,6 @@
 ---
 title: "How This Site Is Built"
+date: "2026-06-16"
 tags: ["go", "devops", "meta"]
 draft: false
 description: "A custom static site generator in Go, deployed via Woodpecker CI on merge to main. No frameworks, no CMS, just goldmark and html/template."

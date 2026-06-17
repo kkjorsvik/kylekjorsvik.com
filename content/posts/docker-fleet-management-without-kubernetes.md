@@ -2,7 +2,7 @@
 title: "Docker Fleet Management Without Kubernetes"
 date: "2026-03-03"
 tags: ["docker", "devops", "ansible"]
-draft: false
+draft: true
 description: "Not every workload needs Kubernetes. How I manage a small fleet of Docker hosts with Compose, Ansible, and a bit of discipline."
 ---
 

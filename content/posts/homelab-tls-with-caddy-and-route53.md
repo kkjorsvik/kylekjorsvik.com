@@ -2,7 +2,7 @@
 title: "Homelab TLS with Caddy and Route 53"
 date: "2026-04-12"
 tags: ["caddy", "tls", "aws", "homelab"]
-draft: false
+draft: true
 description: "Wildcard certificates for internal-only services using Caddy's DNS challenge against Route 53 — no ports exposed to the internet."
 ---
 

@@ -12,28 +12,36 @@ links:
     url: "https://kyvik.io/"
 ---
 
-Kyvik is a security-first, multi-agent AI framework written in Go. It provides a managed
-environment for running AI agents with built-in guardrails, native multi-agent isolation, and a
-web dashboard for non-technical users — all deployable as a single binary with PostgreSQL for
-storage.
+Kyvik is a personal AI agent platform I built in Go because nothing off the shelf did
+exactly what I wanted. Most frameworks either hand agents unrestricted access to the
+host and hope for the best, or they're powerful but require deep infrastructure
+investment to run safely. I wanted something in between — a platform where I own the
+runtime, the agents have real isolation, and I can extend it whenever I need to.
 
-Most agent frameworks force a bad trade-off. One camp hands agents unrestricted access to the
-host — file system, shell, credentials — and hopes nothing goes wrong. The other (LangGraph,
-CrewAI, AutoGen) is powerful but demands deep Python and infrastructure expertise, treating
-security as the implementer's problem. Kyvik closes that gap: it makes security boundaries the
-foundational design principle while staying approachable enough that creating an agent feels
-like filling out a form.
+The primary agent running on Kyvik today is Hank — my personal ops agent. Hank handles
+daily accountability check-ins over Discord, routes tasks, connects to NorthstarOS (my
+task execution system), and keeps me honest about what I said I was going to do. I also
+run a Job Hunter agent through Kyvik during my current job search.
+
+The reason I built it myself instead of reaching for an existing platform is the same
+reason I build most things: I learn a domain better when I'm responsible for the whole
+thing. Kyvik is one of my strongest Go projects and the one I've learned the most from.
 
 ## Design goals
 
-- **Security & guardrails first** — Deny-by-default permissions on every tool call, sandboxed execution in isolated child processes, spending limits, and audit logging for every action. These are built into the framework, not bolted on.
-- **Accessible** — A web dashboard from day one, with secure defaults that protect users who don't know what's dangerous.
-- **Multi-agent native** — Each agent has its own identity, permissions, execution sandbox, and communication boundaries. Agents are isolated by design, not by workaround.
-- **Go-native simplicity** — Single-binary deployment, low resource footprint, goroutine-based concurrency, and no runtime dependencies beyond the binary itself.
+- **Security & guardrails first** — deny-by-default permissions on every tool call,
+  sandboxed execution, spending limits, and audit logging. Built into the framework,
+  not bolted on.
+- **Multi-agent native** — each agent has its own identity, permissions, execution
+  sandbox, and communication boundaries. Isolation by design.
+- **Go-native simplicity** — single-binary deployment, low resource footprint, no
+  runtime dependencies beyond the binary and PostgreSQL.
+- **Extensible** — when I need a new capability, I add it. That's the point of owning
+  the platform.
 
 ## Status
 
-Active development. Core runtime is implemented and MVP features are being completed — agent
-lifecycle management, permission gates, sandboxing, model routing across multiple LLM providers
-(OpenRouter, OpenAI, Anthropic, Ollama), and the web dashboard. Open source under the MIT
-license.
+Active development. Core runtime is implemented — agent lifecycle management, permission
+gates, model routing across OpenRouter, OpenAI, Anthropic, and Ollama, Discord
+integration, and the web dashboard. Open source under the MIT license with a potential
+SaaS path down the road.

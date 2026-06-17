@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"time"
 
 	"github.com/kkjorsvik/kylekjorsvik.com/internal/model"
 	"github.com/kkjorsvik/kylekjorsvik.com/internal/parser"
@@ -45,7 +46,7 @@ func run() error {
 		return err
 	}
 
-	r := renderer.New(templatesDir, staticDir, outputDir, site)
+	r := renderer.New(templatesDir, staticDir, outputDir, site, time.Now().UTC())
 
 	if err := r.RenderAll(); err != nil {
 		return err

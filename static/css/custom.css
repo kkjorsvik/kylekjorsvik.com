@@ -168,6 +168,11 @@ a:hover {
   font-size: 0.9rem;
 }
 .site-footer p { margin: 0; }
+.footer-meta {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.25rem !important;
+}
 
 /* --- Hero ------------------------------------------------------------------ */
 

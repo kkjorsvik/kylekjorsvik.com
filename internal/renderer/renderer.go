@@ -32,15 +32,18 @@ type Renderer struct {
 	staticDir    string
 	outputDir    string
 	site         model.SiteData
+	buildTime    time.Time
 }
 
 // New constructs a Renderer for the given directories and parsed content.
-func New(templatesDir, staticDir, outputDir string, site model.SiteData) *Renderer {
+// buildTime is stamped into the footer of every page.
+func New(templatesDir, staticDir, outputDir string, site model.SiteData, buildTime time.Time) *Renderer {
 	return &Renderer{
 		templatesDir: templatesDir,
 		staticDir:    staticDir,
 		outputDir:    outputDir,
 		site:         site,
+		buildTime:    buildTime,
 	}
 }
 
@@ -62,6 +65,7 @@ type ctx struct {
 	SiteTitle   string
 	SiteURL     string
 	SiteTagline string
+	BuildTime   time.Time
 }
 
 func (r *Renderer) baseCtx() ctx {
@@ -71,6 +75,7 @@ func (r *Renderer) baseCtx() ctx {
 		SiteURL:     SiteURL,
 		SiteTagline: SiteTagline,
 		Description: SiteDescription,
+		BuildTime:   r.buildTime,
 	}
 }
 
@@ -87,6 +92,12 @@ var funcMap = template.FuncMap{
 			return ""
 		}
 		return t.Format("January 2, 2006")
+	},
+	"datetime": func(t time.Time) string {
+		if t.IsZero() {
+			return ""
+		}
+		return t.UTC().Format("Jan 2, 2006 15:04 MST")
 	},
 	"join": strings.Join,
 }

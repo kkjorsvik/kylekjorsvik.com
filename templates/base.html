@@ -52,6 +52,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>© Kyle Kjorsvik · <a href="/feed.xml">RSS</a></p>
+      {{if not .BuildTime.IsZero}}<p class="footer-meta">Generated &amp; deployed {{datetime .BuildTime}}</p>{{end}}
     </div>
   </footer>
 

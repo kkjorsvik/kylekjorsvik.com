@@ -47,6 +47,6 @@ styles, generated into `static/css/syntax.css` at build time and scoped by the s
 
 ## Deploy
 
-`.woodpecker.yml` builds on push to `main` and rsyncs `output/` to the Caddy-served
-directory on the remote host. Deploy secrets: `DEPLOY_HOST`, `DEPLOY_USER`,
+`.woodpecker.yml` builds on push to `main` and rsyncs `output/` to the nginx-served
+directory on the remote EC2 host. Deploy secrets: `DEPLOY_HOST`, `DEPLOY_USER`,
 `DEPLOY_KEY`, `DEPLOY_PATH`.

@@ -22,8 +22,8 @@ const (
 	SiteTagline     = "Senior DevOps Engineer · Platform Engineering · Builder"
 	SiteDescription = "DevOps, platform engineering, and projects."
 
-	maxRecentPosts     = 5
-	maxFeaturedProject = 4
+	maxRecentPosts     = 9
+	maxFeaturedProject = 6
 )
 
 // Renderer holds the configured paths and parsed templates.

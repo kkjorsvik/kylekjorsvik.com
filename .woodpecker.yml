@@ -8,8 +8,6 @@ when:
 clone:
   - name: clone
     image: woodpeckerci/plugin-git
-    settings:
-      insecure_skip_verify: true
     environment:
       GIT_SSL_NO_VERIFY: "true"
 

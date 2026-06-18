@@ -38,5 +38,6 @@ work I do.
 ## Elsewhere
 
 I'm based in DeLamere, North Dakota. Find my code on
-[GitHub](https://github.com/kkjorsvik), follow along via the [RSS feed](/feed.xml),
-or reach me at [kyle@kkjorsvik.com](mailto:kyle@kkjorsvik.com).
+[GitHub](https://github.com/kkjorsvik), connect on
+[LinkedIn](https://www.linkedin.com/in/kkjorsvik), follow along via the
+[RSS feed](/feed.xml), or reach me at [kyle@kkjorsvik.com](mailto:kyle@kkjorsvik.com).

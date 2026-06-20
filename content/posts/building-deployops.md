@@ -1,8 +1,8 @@
 ---
 title: "Building DeployOps: Visibility Into What's Actually Running in Production"
-date: "2026-06-17"
+date: "2026-06-19"
 tags: ["go", "devops", "deployops", "compliance"]
-draft: true
+draft: false
 description: "I built DeployOps because I couldn't answer a basic question about my own production environment without SSHing into boxes. Here's what it does and how it works."
 ---
 
@@ -18,7 +18,7 @@ I built DeployOps because I hit a simpler version of that problem first: I could
 tell you what version of each microservice was actually running in production without
 logging into every server individually and reading the Docker Compose file. That's not
 an audit problem. That's just a visibility problem. And it bothered me enough to build
-something about it.
+something to fix it.
 
 ## The problem that started it
 

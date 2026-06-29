@@ -8,6 +8,8 @@ featured: true
 links:
   - label: "Website"
     url: "https://deployops.io/"
+  - label: "Blog post"
+    url: "/blog/building-deployops/"
 ---
 
 A deployment operations platform for regulated teams.

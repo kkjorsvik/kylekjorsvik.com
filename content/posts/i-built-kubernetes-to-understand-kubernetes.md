@@ -1,6 +1,6 @@
 ---
 title: "I Built Kubernetes to Understand Kubernetes"
-date: "2026-06-27"
+date: "2026-06-28"
 tags: ["go", "kubernetes", "devops", "networking"]
 draft: false
 description: "I'd set up Kubernetes clusters in my homelab and spent real time learning it, but still couldn't honestly explain what it was doing under the hood. So I built my own orchestrator — Smith — to earn the understanding by feeling every decision from the inside."
@@ -202,5 +202,5 @@ knowledge than I had before, and I want more jobs that demand it.
 
 So, plainly: I'm open to Senior DevOps and Platform Engineering roles. If your team runs
 infrastructure where understanding why the system behaves the way it does is the actual job
-— not just keeping it green — that's the work I like and the way I like to learn it. The
-code's on my GitHub if you want to see how I think when nobody's grading it.
+— not just keeping it green — that's the work I like and the way I like to learn it.
+[Smith is on GitHub](https://github.com/kkjorsvik/smith)

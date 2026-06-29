@@ -4,7 +4,7 @@ description: "A SaaS platform for tattoo artists and studios — discovery, book
 status: "active"
 tags: ["php", "laravel", "stripe", "square"]
 draft: false
-featured: true
+featured: false
 links:
   - label: "Website"
     url: "https://tattooreserve.com"
